@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -99,5 +100,76 @@ public class UserAccount {
 			Logger.writeToLog(e.toString());
 		}
 		System.out.println("Your stored credentials were successfully deleted.");
+	}
+
+	public static void getAllUserAccountFilenames() {
+		Boolean exit = false;
+		Scanner input = new Scanner(System.in);
+		
+			File folder = new File("Data\\UserAccounts");
+			String[] fileNames = folder.list();
+			mergeSort(fileNames, 0, fileNames.length - 1);
+			System.out.println("---- User Account Files [Ascending Order done by Merge Sort]-----");
+			for(String fileName:fileNames)
+				System.out.println(fileName);
+			System.out.println("------------------------");
+			System.out.println("Type 4 and Enter to go back to the Main menu.");
+			while (!exit) {
+			String exitCode = input.next();
+			if (exitCode.equals("4")) {
+				exit = true;
+			} else {
+				System.out.println("4 is the only valid option.");
+			}
+		}
+	}
+
+	private static void mergeSort(String[] fileNames, int start, int end) {
+		if (start == end) {
+			return;
+		}
+		int mid = (start + end) / 2;
+		// Sort the first and the second half
+		mergeSort(fileNames, start, mid);
+		mergeSort(fileNames, mid + 1, end);
+		merge(fileNames, start, mid, end);
+	}
+
+	private static void merge(String[] a, int start, int mid, int end) {
+		int n = end - start + 1; // Size of the range to be merged
+		String[] temp = new String[n]; // Merge both halves into a temporary array temp
+		int i1 = start; // Next element to consider in the first range
+		int i2 = mid + 1; // Next element to consider in the second range
+		int j = 0; // Next open position in temp
+
+		while (i1 <= mid && i2 <= end) {
+			if (a[i1].compareTo(a[i2]) < 0) {
+				temp[j] = a[i1];
+				i1++;
+			} else {
+				temp[j] = a[i2];
+				i2++;
+			}
+			j++;
+		}
+
+		// Copy any remaining entries of the first half
+		while (i1 <= mid) {
+			temp[j] = a[i1];
+			i1++;
+			j++;
+		}
+
+		// Copy any remaining entries of the second half
+		while (i2 <= end) {
+			temp[j] = a[i2];
+			i2++;
+			j++;
+		}
+
+		// Copy back from the temporary array
+		for (j = 0; j < n; j++) {
+			a[start + j] = temp[j];
+		}
 	}
 }
