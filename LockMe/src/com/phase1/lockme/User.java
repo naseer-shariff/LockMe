@@ -16,7 +16,6 @@ public class User {
 			writer.print(username + "\t" + password);
 			writer.println();
 			writer.close();
-			System.out.println(userAccounts.createNewFile());
 			System.out.println("User " + username + " succesfully created!");
 		} catch (IOException e) {
 			System.out.println("We couldn't create your account due to an error. Please try again." + "\n"
