@@ -25,7 +25,6 @@ public class UserAccount {
 			writer.close();
 			System.out.println("Account added successfully.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("We couldn't create your account due to an error. Please try again." + "\n"
 					+ "If the issue persists please contact us at support@lockme.com." + "\n"
 					+ "We apologize for the inconvenience.");
@@ -90,7 +89,6 @@ public class UserAccount {
 				System.out.print("Please choose one of the valid options 1,2,3, or 4 and hit Enter.");
 			}
 		}
-		Start.main(null);
 	}
 
 	public static void deleteUserAndAccountFile(String username) {

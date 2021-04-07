@@ -42,7 +42,7 @@ public class Start {
 
 		} catch (Exception e) {
 			Logger.writeToLog(e.toString());
-			System.out.println("An error has occurred. Please restart the application"
+			System.out.println("An error has occurred. Please restart the application. "
 					+ "If this issue persists please contact support@lockme.com.");
 		}
 
