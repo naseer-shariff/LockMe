@@ -1,1 +1,4 @@
-facebbok	sampleuser	password123
+facebook	sampleuser	password123
+gmail	sup455	3TrR33EEE
+instagram	suoko	2323e32
+pinterest	eDew	Rt$5#
