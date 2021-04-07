@@ -58,18 +58,17 @@ public class UserAccount {
 	}
 
 	public static void lockerOptions(String username) {
-
-		System.out.println("=================================");
-		System.out.println("|	" + username + "'s Locker	|");
-		System.out.println("=================================");
-		System.out.println("Choose one of the options below");
-		System.out.println("1. Show my credentials");
-		System.out.println("2. Add credentials");
-		System.out.println("3. Delete my stored credentials");
-		System.out.println("4. Return to Main menu");
-		System.out.println("[Type the number and hit Enter to load the option]");
 		boolean exit = false;
 		while (!exit) {
+			System.out.println("=================================");
+			System.out.println("|	" + username + "'s Locker	|");
+			System.out.println("=================================");
+			System.out.println("Choose one of the options below");
+			System.out.println("1. Show my credentials");
+			System.out.println("2. Add credentials");
+			System.out.println("3. Delete my stored credentials");
+			System.out.println("4. Return to Main menu");
+			System.out.println("[Type the number and hit Enter to load the option]");
 			Scanner input = new Scanner(System.in);
 			int userInput = input.nextInt();
 			switch (userInput) {
