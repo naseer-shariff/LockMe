@@ -25,6 +25,12 @@ public class UserAccount {
 			writer.println();
 			writer.close();
 			System.out.println("Account added successfully.");
+			boolean exit = false;
+			while (!exit) {
+				System.out.println("Press Enter to go back to the menu.");
+				System.in.read();
+				exit = true;
+			}
 		} catch (IOException e) {
 			System.out.println("We couldn't create your account due to an error. Please try again." + "\n"
 					+ "If the issue persists please contact us at support@lockme.com." + "\n"
@@ -52,6 +58,12 @@ public class UserAccount {
 						+ scanner.next() + "\n" + "----------");
 			}
 			scanner.close();
+			boolean exit = false;
+			while (!exit) {
+				System.out.println("Press Enter to go back to the menu.");
+				System.in.read();
+				exit = true;
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Logger.writeToLog(e.toString());
@@ -96,32 +108,43 @@ public class UserAccount {
 		try {
 			PrintWriter writer = new PrintWriter(userAccountFile);
 			writer.close();
+			System.out.println("Your stored credentials were deleted successfully.");
+			boolean exit = false;
+			while (!exit) {
+				System.out.println("Press Enter to go back to the menu.");
+				System.in.read();
+				exit = true;
+			}
 		} catch (FileNotFoundException e) {
 			Logger.writeToLog(e.toString());
+		} catch (IOException e) {
+			Logger.writeToLog(e.toString());
 		}
-		System.out.println("Your stored credentials were successfully deleted.");
+
 	}
 
 	public static void getAllUserAccountFilenames() {
-		Boolean exit = false;
+
 		Scanner input = new Scanner(System.in);
-		
-			File folder = new File("Data\\UserAccounts");
-			String[] fileNames = folder.list();
-			mergeSort(fileNames, 0, fileNames.length - 1);
-			System.out.println("---- User Account Files [Ascending Order done by Merge Sort]-----");
-			for(String fileName:fileNames)
-				System.out.println(fileName);
-			System.out.println("------------------------");
-			System.out.println("Type 4 and Enter to go back to the Main menu.");
-			while (!exit) {
-			String exitCode = input.next();
-			if (exitCode.equals("4")) {
+		File folder = new File("Data\\UserAccounts");
+		String[] fileNames = folder.list();
+		mergeSort(fileNames, 0, fileNames.length - 1);
+		System.out.println("---- User Account Files [Ascending Order done by Merge Sort]-----");
+		for (String fileName : fileNames)
+			System.out.println(fileName);
+		System.out.println("------------------------");
+		Boolean exit = false;
+		while (!exit) {
+			System.out.println("Press Enter to go back to the menu.");
+			try {
+				System.in.read();
 				exit = true;
-			} else {
-				System.out.println("4 is the only valid option.");
+			} catch (IOException e) {
+				Logger.writeToLog(e.toString());
 			}
+
 		}
+
 	}
 
 	private static void mergeSort(String[] fileNames, int start, int end) {
